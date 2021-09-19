@@ -1,0 +1,238 @@
+public class product {
+    
+    private Scanner enter = new Scanner(System.in);
+    public void CaptureProduct(Products pro) {
+        System.out.print("Enter the product code:  ");
+        String code = enter.nextLine();
+        pro.setCode(code);
+        System.out.print("enter the product name:  ");
+        String name = enter.nextLine();
+        pro.setClname(name);
+        System.out.print("Select the product category: \n"
+                + "1. Desktop Computer\n"
+                + "2. Laptop\n"
+                + "3. Tablet\n"
+                + "4. Printer\n"
+                + "5. Gaming Console");
+        int cat = enter.nextInt();
+        pro.setCatagory(cat);
+        System.out.print("Product Category >> " + pro.getCatagory() + "\n");
+        System.out.print("Indicate the prouct warrantly. Enter (1) for 6 months or any "
+                + "any other key for 2 years. 2 >> ");
+        int warr = enter.nextInt();
+        pro.setWarrantly(warr);
+        System.out.print("Enter the price for " + pro.getClname() + ">> ");
+        int price = enter.nextInt();
+        pro.setPrice(price);
+        System.out.print("Enter the stock level for " + pro.getClname() + ">> ");
+        int level = enter.nextInt();
+        pro.setLevel(level);
+        System.out.print("Enter the supplier for " + pro.getClname() + ">> ");
+        String supp = enter.next();
+        pro.setSupplier(supp);
+        System.out.print("Product details have been saved successfully!!!");
+       
+    }
+    public void saveCaptPro(Products pro,Products[]pr){
+        for(int i = 0; i<pr.length;i++){
+            pr[i] = pro;
+        }
+        
+    }
+    public boolean searchProduct(Products[]pr){
+        System.out.print("Please enter the product code to search: ");
+        String cd = enter.next();
+        boolean search = false;
+        boolean found = true;
+        for (Products pro : pr){
+            if (pro.getCode().equalsIgnoreCase(cd)){
+                System.out.print("**********************************************************************\n"
+                        + "PRODUCT SEARCH RESULTS\n"
+                        + "**********************************************************************\n"
+                        + "PRODUCT CODE:  " + pro.getCode()
+                        + "\nPRODUCT NAME:  " + pro.getClname()
+                        + "\nPRODUCT WARRANTLY:  " + pro.getWarrantly()
+                        + "\nPRODUCT CATAGORY:  " + pro.getCatagory()
+                        + "\nPRODUCT PRICE:  " + pro.getPrice()
+                        + "\nPRODUCT STOCK LEVEL:  " + pro.getLevel()
+                        + "\nPRODUCT SUPPLIER:  " + pro.getSupplier()
+                        + "\n***********************************************************************"
+                
+                );
+                
+                found=true;
+                
+                return found;
+                
+            }
+        }
+        return found;
+        
+    }
+    public void UpdateProduct(Products pro){
+        System.out.print("Please enter the product code to update:  ");
+        String cod = enter.next();
+        System.out.print("Update the warrenty? (y) Yes, (n) No :");
+        String ans = enter.next();
+        if (ans.equals("yes")){
+             System.out.print("Indicate the prouct warrantly. Enter (1) for 6 months or any "
+                + "any other key for 2 years. 2 >> ");
+        int wa = enter.nextInt();
+        pro.setWarrantly(wa);
+        }else{
+            if(ans.equals("no")){
+                System.out.print("nothing has changed");
+            }
+        }
+        System.out.print("Update the product price? (y) Yes, (n) no");
+        String an = enter.next();
+        if(an.equals("yes")){
+            System.out.print("Enter the new price for " + pro.getClname() + ">> ");
+            int pri = enter.nextInt();
+            pro.setPrice(pri);
+        }else {
+            if (an.equals("no")){
+            System.out.print("Nothing has changed ");
+        }
+        System.out.print("Update the stock level? (y) yes , (n) no");
+        String answer = enter.next();
+        if (answer.equals("yes")){
+            System.out.print("Enter the new stock level >> ");
+            int lev = enter.nextInt();
+            pro.setLevel(lev);
+           
+        }else {
+            if (answer.equals("no")){
+                System.out.print("Nothing has changed");
+            }
+            System.out.print("**********************************************************************\n"
+                        + "PRODUCT UPDATED RESULTS\n"
+                        + "**********************************************************************\n"
+                        + "PRODUCT CODE:  " + pro.getCode()
+                        + "\nPRODUCT NAME:  " + pro.getClname()
+                        + "\nPRODUCT WARRANTLY:  " + pro.getWarrantly()
+                        + "\nPRODUCT CATAGORY:  " + pro.getCatagory()
+                        + "\nPRODUCT PRICE:  " + pro.getPrice()
+                        + "\nPRODUCT STOCK LEVEL:  " + pro.getLevel()
+                        + "\nPRODUCT SUPPLIER:  " + pro.getSupplier()
+                        + "\n***********************************************************************\n");
+            System.out.print("Product details have been updated successfully!!!");
+        }
+    } 
+    } 
+    public boolean DeleteProduct(Products[]pr){
+        System.out.print("Please enter the product code to search: ");
+        String co = enter.next();
+        boolean delete = false;
+        for (Products pro : pr){
+            if (pro.getCode().equalsIgnoreCase(co)){
+                System.out.print("**********************************************************************\n"
+                        + "PRODUCT SEARCH RESULTS\n"
+                        + "**********************************************************************\n"
+                        + "PRODUCT CODE:  " + pro.getCode()
+                        + "\nPRODUCT NAME:  " + pro.getClname()
+                        + "\nPRODUCT WARRANTLY:  " + pro.getWarrantly()
+                        + "\nPRODUCT CATAGORY:  " + pro.getCatagory()
+                        + "\nPRODUCT PRICE:  " + pro.getPrice()
+                        + "\nPRODUCT STOCK LEVEL:  " + pro.getLevel()
+                        + "\nPRODUCT SUPPLIER:  " + pro.getSupplier()
+                        + "\n***********************************************************************"
+                
+                );
+                delete=true;
+                return delete;
+            }
+        }
+        return delete;
+    }
+    public void PrintReport(Products pro,Products[]pr){
+                   System.out.print("**********************************************************************\n"
+                        + "PRODUCT  RESULTS\n"
+                        + "**********************************************************************\n"
+                        + "PRODUCT CODE:  " + pro.getCode()
+                        + "\nPRODUCT NAME:  " + pro.getClname()
+                        + "\nPRODUCT WARRANTLY:  " + pro.getWarrantly()
+                        + "\nPRODUCT CATAGORY:  " + pro.getCatagory()
+                        + "\nPRODUCT PRICE:  " + pro.getPrice()
+                        + "\nPRODUCT STOCK LEVEL:  " + pro.getLevel()
+                        + "\nPRODUCT SUPPLIER:  " + pro.getSupplier()
+                        + "\n***********************************************************************"
+                
+                );
+
+    }
+    public void Exitapplication(Products pro,Products[] pr){
+        System.exit(0);
+    }
+    }
+    
+    public class ExtremeIT {
+    
+    
+ public static Products pro = new Products();
+ public static product pr = new product();
+ public static Products[] prArr = new Products[7];
+ public static Scanner input = new Scanner(System.in);
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        //Displaying the Array list for the Product class as well for the products.
+        
+       DisplayMenue();
+    }
+   public static void DisplayMenue(){
+       System.out.print("BRIGHT FUTURE TECHNOLOGIES APPLICATION\n"
+               + "*********************************************\n"
+               + "Enter (1) to launch menue or sny other the key to exit: ");
+       int user =input.nextInt();
+       if (user==1) {
+           System.out.print("Please select one of the following menue items:\n"
+                   + "(1) Capture a new product\n"
+                   + "(2) Search for a product\n"
+                   + "(3) Update a product\n"
+                   + "(4) Delete a product\n"
+                   + "(5) Print report\n"
+                   + "(6) Exit Application");
+           int choice = input.nextInt();
+           switch(choice){
+               case 1:
+                   for (int i =0; i<prArr.length;i++){
+                   pr.CaptureProduct(pro);
+                   pr.saveCaptPro(pro, prArr);
+                   DisplayMenue();
+                   break;
+                   }
+               case 2:
+                    
+                  pr.searchProduct(prArr);
+                  pr.saveCaptPro(pro, prArr);
+                   DisplayMenue();
+                   break;
+                     
+               case 3:
+                   pr.UpdateProduct(pro) ;
+                    DisplayMenue();
+                   break;
+               
+               case 4:
+                   pr.DeleteProduct(prArr);
+                   DisplayMenue();
+                   break;
+                   
+               case 5:
+                   pr.PrintReport(pro, prArr);
+                   DisplayMenue();
+                   break;
+                   
+               case 6:
+                   pr.Exitapplication(pro, prArr);
+           }
+       }else{
+           if (user==0){
+               System.exit(user);
+           }
+       }
+   } 
+}
+
